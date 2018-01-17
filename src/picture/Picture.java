@@ -12,14 +12,15 @@ import java.awt.image.BufferedImage;
  */
 public class Picture {
 
-  /** The internal image representation of this picture. */
+  /**
+   * The internal image representation of this picture.
+   */
   private final BufferedImage image;
 
   /**
    * Construct a new Picture object from the specified image.
-   * 
-   * @param image
-   *          the internal representation of the image.
+   *
+   * @param image the internal representation of the image.
    */
   protected Picture(BufferedImage image) {
     this.image = image;
@@ -27,7 +28,7 @@ public class Picture {
 
   /**
    * Return the internal image represented by the Picture.
-   * 
+   *
    * @return the <tt>BufferedImage</tt> associated with this <tt>Picture</tt>.
    */
   protected BufferedImage getImage() {
@@ -36,7 +37,7 @@ public class Picture {
 
   /**
    * Return the width of the <tt>Picture</tt>.
-   * 
+   *
    * @return the width of this <tt>Picture</tt>.
    */
   public int getWidth() {
@@ -45,7 +46,7 @@ public class Picture {
 
   /**
    * Return the height of the <tt>Picture</tt>.
-   * 
+   *
    * @return the height of this <tt>Picture</tt>.
    */
   public int getHeight() {
@@ -53,17 +54,13 @@ public class Picture {
   }
 
   /**
-   * Return the colour components (red, green, then blue) of the pixel-value
-   * located at (x,y).
-   * 
-   * @param x
-   *          x-coordinate of the pixel value to return
-   * @param y
-   *          y-coordinate of the pixel value to return
+   * Return the colour components (red, green, then blue) of the pixel-value located at (x,y).
+   *
+   * @param x x-coordinate of the pixel value to return
+   * @param y y-coordinate of the pixel value to return
    * @return the RGB components of the pixel-value located at (x,y).
-   * @throws ArrayIndexOutOfBoundsException
-   *           if the specified pixel-location is not contained within the
-   *           boundaries of this picture.
+   * @throws ArrayIndexOutOfBoundsException if the specified pixel-location is not contained within
+   * the boundaries of this picture.
    */
   public Color getPixel(int x, int y) {
     int rgb = image.getRGB(x, y);
@@ -72,16 +69,12 @@ public class Picture {
 
   /**
    * Update the pixel-value at the specified location.
-   * 
-   * @param x
-   *          the x-coordinate of the pixel to be updated
-   * @param y
-   *          the y-coordinate of the pixel to be updated
-   * @param rgb
-   *          the RGB components of the updated pixel-value
-   * @throws ArrayIndexOutOfBoundsException
-   *           if the specified pixel-location is not contained within the
-   *           boundaries of this picture.
+   *
+   * @param x the x-coordinate of the pixel to be updated
+   * @param y the y-coordinate of the pixel to be updated
+   * @param rgb the RGB components of the updated pixel-value
+   * @throws ArrayIndexOutOfBoundsException if the specified pixel-location is not contained within
+   * the boundaries of this picture.
    */
   public void setPixel(int x, int y, Color rgb) {
 
@@ -91,13 +84,11 @@ public class Picture {
 
   /**
    * Test if the specified point lies within the boundaries of this picture.
-   * 
-   * @param x
-   *          the x co-ordinate of the point
-   * @param y
-   *          the y co-ordinate of the point
-   * @return <tt>true</tt> if the point lies within the boundaries of the
-   *         picture, <tt>false</tt> otherwise.
+   *
+   * @param x the x co-ordinate of the point
+   * @param y the y co-ordinate of the point
+   * @return <tt>true</tt> if the point lies within the boundaries of the picture, <tt>false</tt>
+   * otherwise.
    */
   public boolean contains(int x, int y) {
     return x >= 0 && y >= 0 && x < getWidth() && y < getHeight();
@@ -108,9 +99,8 @@ public class Picture {
 
   /**
    * Returns true if this Picture is graphically identical to the other one.
-   * 
-   * @param other
-   *          The other picture to compare to.
+   *
+   * @param other The other picture to compare to.
    * @return true iff this Picture is graphically identical to other.
    */
   public boolean equals(Object otherO) {
