@@ -48,6 +48,8 @@ public class Process {
   }
 
   public static void rotate(int angle) {
+    assert (angle == 90 || angle == 180 || angle == 270) : "Not a valid angle to rotate image";
+
     if (angle == 90) {
       int height = picture.getHeight();
       int width = picture.getWidth();
@@ -76,6 +78,8 @@ public class Process {
   }
 
   public static void flip(String d) {
+    assert (d.equals("V") || d.equals("H")) : "Not a valid command to flip image with";
+
     int height = picture.getHeight();
     int width = picture.getWidth();
 
