@@ -107,7 +107,7 @@ public class TestSuite {
   }
 
   @Test
-  public void mosaicWhiteBlueAndGreen() throws IOException {
+  public void mosaicWhiteBlueGreen() throws IOException {
     assertEquals(
         Utils.loadPicture("images/mosaicwhitebluegreen.png"),
         runMain(tmpFolder, "mosaic", "4", "images/white64x64.png",

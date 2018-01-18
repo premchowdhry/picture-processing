@@ -3,59 +3,59 @@ package picture;
 public class Main {
 
   public static void main(String[] args) {
-    if (args[0].equals("invert")) {
-      Process process = new Process();
-      process.setPicture(args[1]);
-      process.invert();
-      process.save(args[2]);
+    assert (args.length > 2) : "Invalid argument input";
+
+    switch(args[0]) {
+
+      case "invert" :
+        Process.setPicture(args[1]);
+        Process.invert();
+        break;
+
+      case "grayscale" :
+        Process.setPicture(args[1]);
+        Process.grayscale();
+        break;
+
+      case "rotate" :
+        int angle = Integer.parseInt(args[1]);
+        Process.setPicture(args[2]);
+        Process.rotate(angle);
+        break;
+
+      case "flip" :
+        Process.setPicture(args[2]);
+        Process.flip(args[1]);
+        break;
+
+      case "blend" :
+        Picture[] picsBlend = new Picture[args.length - 2];
+        for (int i = 1; i < args.length - 1; i++) {
+          picsBlend[i - 1] = Utils.loadPicture(args[i]);
+        }
+        Process.blend(picsBlend);
+        break;
+
+      case "blur" :
+        Process.setPicture(args[1]);
+        Process.blur();
+        break;
+
+      case "mosaic" :
+        Picture[] picsMosaic = new Picture[args.length - 3];
+        int tileSize = Integer.parseInt(args[1]);
+        for (int i = 2; i < args.length - 1; i++) {
+          picsMosaic[i - 2] = Utils.loadPicture(args[i]);
+        }
+        Process.mosaic(tileSize, picsMosaic);
+        break;
+
+      default :
+        assert (true) : "Invalid command";
+        break;
     }
 
-    else if (args[0].equals("grayscale")) {
-      Process process = new Process();
-      process.setPicture(args[1]);
-      process.grayscale();
-      process.save(args[2]);
-    }
+    Process.save(args[args.length - 1]);
 
-    else if (args[0].equals("rotate")) {
-      Process process = new Process();
-      process.setPicture(args[2]);
-      process.rotate(Integer.parseInt(args[1]));
-      process.save(args[3]);
-    }
-
-    else if (args[0].equals("flip")) {
-      Process process = new Process();
-      process.setPicture(args[2]);
-      process.flip(args[1]);
-      process.save(args[3]);
-    }
-
-    else if (args[0].equals("blend")) {
-      Process process = new Process();
-      Picture[] pictures = new Picture[args.length - 2];
-      for (int i = 1; i < args.length - 1; i++) {
-        pictures[i - 1] = Utils.loadPicture(args[i]);
-      }
-      process.blend(pictures);
-      process.save(args[args.length - 1]);
-    }
-
-    else if (args[0].equals("blur")) {
-      Process process = new Process();
-      process.setPicture(args[1]);
-      process.blur();
-      process.save(args[2]);
-    }
-
-    else if (args[0].equals("mosaic")) {
-      Process process = new Process();
-      Picture[] pictures = new Picture[args.length - 3];
-      for (int i = 2; i < args.length - 1; i++) {
-        pictures[i - 2] = Utils.loadPicture(args[i]);
-      }
-      process.mosaic(Integer.parseInt(args[1]), pictures);
-      process.save(args[args.length - 1]);
-    }
   }
 }
