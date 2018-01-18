@@ -3,7 +3,7 @@ package picture;
 public class Main {
 
   public static void main(String[] args) {
-    assert (args.length > 2) : "Invalid argument input";
+    assert (args.length > 2) : "Invalid input length";
 
     switch(args[0]) {
 
@@ -51,7 +51,7 @@ public class Main {
         break;
 
       default :
-        assert (true) : "Invalid command";
+        assert (false) : "Invalid command";
         break;
     }
 
